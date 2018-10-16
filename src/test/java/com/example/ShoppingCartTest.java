@@ -96,4 +96,17 @@ public class ShoppingCartTest {
 
         Assert.assertThat(hasProduct, equalTo(false));
     }
+
+    @Test
+    public void containsShouldReturnTrueIfProductHasSamWeightAndPrice() {
+        ShoppingCart cart = new ShoppingCart();
+        Product product = new Product(5, 100);
+        cart.addProduct(product);
+        product = new Product(5, 400);
+        cart.addProduct(product);
+
+        boolean hasProduct = cart.contains(new Product(5,100));
+
+        Assert.assertThat(hasProduct, equalTo(true));
+    }
 }
