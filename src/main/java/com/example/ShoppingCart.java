@@ -1,7 +1,15 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ShoppingCart {
     private int weight = 0;
+    private List<Product> products;
+
+    ShoppingCart() {
+        products = new ArrayList<>();
+    }
 
     boolean addProduct(Product product) {
         if (product == null) {
@@ -12,7 +20,16 @@ class ShoppingCart {
             return false;
         } else {
             weight = newWeight;
+            products.add(product);
             return true;
         }
+    }
+
+    int totalPrice() {
+        int total = 0;
+        for (Product product : products) {
+            total += product.getPrice();
+        }
+        return total;
     }
 }

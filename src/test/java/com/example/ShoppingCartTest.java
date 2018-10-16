@@ -9,7 +9,7 @@ public class ShoppingCartTest {
     @Test
     public void addProductShouldAddProductInCart() {
         ShoppingCart cart = new ShoppingCart();
-        final Product product = new Product();
+        final Product product = new Product(0, 0);
 
         boolean isAdded = cart.addProduct(product);
 
@@ -29,13 +29,25 @@ public class ShoppingCartTest {
     @Test
     public void addProductShouldReturnFalseIfCartSizeIsExcesses() {
         ShoppingCart cart = new ShoppingCart();
-        Product product = new Product(10);
+        Product product = new Product(10, 0);
         boolean isAdded = cart.addProduct(product);
 
         Assert.assertThat(isAdded, equalTo(true));
 
-        product = new Product(10);
+        product = new Product(10, 0);
         isAdded = cart.addProduct(product);
         Assert.assertThat(isAdded, equalTo(false));
+    }
+
+    @Test
+    public void totalPriceShouldReturnTotalPriceOfAddedProducts() {
+        ShoppingCart cart = new ShoppingCart();
+        Product product = new Product(5, 100);
+        cart.addProduct(product);
+        product = new Product(5, 400);
+        cart.addProduct(product);
+        int totalPrice = cart.totalPrice();
+
+        Assert.assertThat(totalPrice, equalTo(500));
     }
 }
