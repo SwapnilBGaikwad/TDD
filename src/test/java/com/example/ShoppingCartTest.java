@@ -70,4 +70,30 @@ public class ShoppingCartTest {
 
         Assert.assertThat(count, equalTo(0));
     }
+
+    @Test
+    public void containsShouldReturnTrueIfCartHasProduct() {
+        ShoppingCart cart = new ShoppingCart();
+        Product product = new Product(5, 100);
+        cart.addProduct(product);
+        product = new Product(5, 400);
+        cart.addProduct(product);
+
+        boolean hasProduct = cart.contains(product);
+
+        Assert.assertThat(hasProduct, equalTo(true));
+    }
+
+    @Test
+    public void containsShouldReturnFalseIfCartHasProduct() {
+        ShoppingCart cart = new ShoppingCart();
+        Product product = new Product(5, 100);
+        cart.addProduct(product);
+        product = new Product(5, 400);
+        cart.addProduct(product);
+
+        boolean hasProduct = cart.contains(new Product(1,2));
+
+        Assert.assertThat(hasProduct, equalTo(false));
+    }
 }

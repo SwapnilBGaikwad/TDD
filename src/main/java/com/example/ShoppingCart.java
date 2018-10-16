@@ -36,4 +36,8 @@ class ShoppingCart {
     int countProducts() {
         return products.size();
     }
+
+    boolean contains(Product product) {
+        return products.contains(product);
+    }
 }
