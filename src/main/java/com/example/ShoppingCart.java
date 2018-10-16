@@ -32,4 +32,8 @@ class ShoppingCart {
         }
         return total;
     }
+
+    int countProducts() {
+        return products.size();
+    }
 }

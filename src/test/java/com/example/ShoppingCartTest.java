@@ -50,4 +50,24 @@ public class ShoppingCartTest {
 
         Assert.assertThat(totalPrice, equalTo(500));
     }
+
+    @Test
+    public void countShouldReturnNoOfProductsInCart() {
+        ShoppingCart cart = new ShoppingCart();
+        Product product = new Product(5, 100);
+        cart.addProduct(product);
+        product = new Product(5, 400);
+        cart.addProduct(product);
+        int count = cart.countProducts();
+
+        Assert.assertThat(count, equalTo(2));
+    }
+
+    @Test
+    public void countShouldReturnZeroIfCartIsEmpty() {
+        ShoppingCart cart = new ShoppingCart();
+        int count = cart.countProducts();
+
+        Assert.assertThat(count, equalTo(0));
+    }
 }
